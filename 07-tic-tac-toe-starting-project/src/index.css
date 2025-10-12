@@ -68,10 +68,10 @@ h1 {
 }
 
 #players li {
-  display: flex;
-  align-items: center;
-  width: 50%;
-  border: 2px solid transparent;
+  display: flex;          /* Makes the list item a flex container */
+  align-items: center;    /* Centers items vertically inside the li */
+  width: 50%;            /* Makes each player take up half the available width */
+  border: 2px solid transparent;  /* Invisible border by default, becomes visible when active */
 }
 
 #players.highlight-player li.active {
