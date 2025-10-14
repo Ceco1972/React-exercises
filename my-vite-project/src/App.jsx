@@ -5,9 +5,10 @@ import { useState } from 'react';
 import Player from './components/Player';
 // import NewPlayer from './components/NewPlayer';
 import Gameboard from './components/Gameboard';
-import Log from './components/Log';
+// import Log from './components/Log';
 import { WINNING_COMBINATIONS } from './components/winning-combinations';
 import GameOver from './components/GameOver';
+import Log from './components/Log';
 
 const PLAYERS = {
   X: 'Player 1',
@@ -110,8 +111,9 @@ function handlePlayerNameChange(symbol, newName) {
         </ol>
         {(winner || hasDraw)  && <GameOver winner={winner} onRestart={handleRestart} />}
         <Gameboard onSelectSquare={handleSelectSquare} board={gameBoard} />
+        <Log turns={gameTurns} />
       </div>
-      <Log turns={gameTurns} />
+      {/* <Log turns={gameTurns} /> */}
     </main>
   );
 }

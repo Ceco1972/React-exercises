@@ -1,4 +1,4 @@
-export default function Gameboard ({onSelectSquare, board}) {
+export default function Gameboard({onSelectSquare, board}) {
   return (
     <ol id='game-board'>
       {board.map((row, rowIndex) => (

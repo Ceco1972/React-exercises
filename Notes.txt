@@ -1,2 +1,10 @@
 Complete course resources: https://github.com/academind/react-complete-guide-course-resources
 
+run this command to create a React application:
+npx create-react-app my-react-project
+npm create vite@latest
+npm create vite@latest my-vite-project -- --template react
+
+npm start is typically for Create React App
+npm run dev is typically for Vite projects
+
