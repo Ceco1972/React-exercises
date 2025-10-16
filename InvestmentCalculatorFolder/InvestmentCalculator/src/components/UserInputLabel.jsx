@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function UserInputLabel({ initialInvestment, onInitialInvestmentChange }) {
+export default function UserInputLabel({ initialInvestment, onInitialInvestmentChange, annualInvestment, onAnnualInvestmentChange, expectedReturn, onExpectedReturnChange, duration, onDurationChange }) {
     // const [initialInvestment, setInitialInvestment] = useState(initialInvestment);
     // function handleInitialIvestmentChange(event) {  
     //     setInitialInvestment(event.target.value);
@@ -19,17 +19,30 @@ export default function UserInputLabel({ initialInvestment, onInitialInvestmentC
         </p>
         <p>
           <label htmlFor="annual-investment">Annual Investment</label>
-          <input type="number" />
+          <input 
+          type="number" 
+          value ={annualInvestment}
+          onChange={(e) => onAnnualInvestmentChange(Number(e.target.value))}
+          required
+          />
         </p>
       </div>
       <div className="input-group">
         <p>
           <label htmlFor="expected-return">Expected Return</label>
-          <input type="number" required />
+          <input 
+          type="number"
+          value = {expectedReturn}
+          onChange={(e) => onExpectedReturnChange(Number(e.target.value))}
+          required />
         </p>
         <p>
           <label htmlFor="duration">Duration</label>
-          <input type="number" required />
+          <input 
+          type="number" 
+          value={duration}
+          onChange={(e) => onDurationChange(Number(e.target.value))}
+          required />
         </p>
       </div>
     </div>

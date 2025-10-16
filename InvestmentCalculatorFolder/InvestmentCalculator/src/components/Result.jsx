@@ -1,12 +1,12 @@
 import { calculateInvestmentResults } from "../util/investment";
 
-export default function Result({ initialInvestment }) {
+export default function Result({ initialInvestment, annualInvestment, expectedReturn, duration }) {
   
   const investmentProfile = {
   initialInvestment: initialInvestment,       // Initial amount in currency units
-  annualInvestment: 5000,         // Amount added each year
-  expectedReturn: 7,           // Annual return rate (e.g., 7%)
-  duration: 4                   // Investment duration in years
+  annualInvestment: annualInvestment,         // Amount added each year
+  expectedReturn: expectedReturn,           // Annual return rate (e.g., 7%)
+  duration: duration                   // Investment duration in years
 };
   const results = calculateInvestmentResults(investmentProfile);
   let totalInterest = 0;
@@ -29,10 +29,10 @@ export default function Result({ initialInvestment }) {
           return (
             <tr key={data.year}>
               <td>{data.year}</td>
-              <td>{data.valueEndOfYear.toFixed(2)}</td>
-              <td>{data.interest.toFixed(2)}</td>
-              <td>{totalInterest.toFixed(2)}</td>
-              <td>{(data.valueEndOfYear - totalInterest).toFixed(2)}</td>
+              <td>{data.valueEndOfYear.toFixed(0)}</td>
+              <td>{data.interest.toFixed(0)}</td>
+              <td>{totalInterest.toFixed(0)}</td>
+              <td>{(data.valueEndOfYear - totalInterest).toFixed(0)}</td>
             </tr>
           );
         })}

@@ -4,7 +4,10 @@ import Result from "./components/Result"
 import { useState } from "react"
 
 function App() {
-  const [initialInvestment, setInitialInvestment] = useState(0);
+  const [initialInvestment, setInitialInvestment] = useState();
+  const [annualInvestment, setAnnualInvestment] = useState();
+  const [expectedReturn, setExpectedReturn] = useState();
+  const [duration, setDuration] = useState();  
 
   return (
     <div className = 'center'>
@@ -12,8 +15,14 @@ function App() {
       <UserInputLabel 
         initialInvestment={initialInvestment}
         onInitialInvestmentChange={setInitialInvestment}
+        annualInvestment={annualInvestment}
+        onAnnualInvestmentChange={setAnnualInvestment}
+        expectedReturn={expectedReturn}
+        onExpectedReturnChange={setExpectedReturn}
+        duration={duration}
+        onDurationChange={setDuration}  
       />
-      <Result initialInvestment={initialInvestment} />
+      <Result initialInvestment={initialInvestment} annualInvestment={annualInvestment} expectedReturn={expectedReturn} duration={duration}/>
     </div>
   )
 }
