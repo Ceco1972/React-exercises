@@ -1,14 +1,13 @@
 import { calculateInvestmentResults } from "../util/investment";
 
-export default function Result({ initialInvestment, annualInvestment, expectedReturn, duration }) {
-  
-  const investmentProfile = {
-  initialInvestment: initialInvestment,       // Initial amount in currency units
-  annualInvestment: annualInvestment,         // Amount added each year
-  expectedReturn: expectedReturn,           // Annual return rate (e.g., 7%)
-  duration: duration                   // Investment duration in years
-};
-  const results = calculateInvestmentResults(investmentProfile);
+export default function Result({ investData }) {
+  const results = calculateInvestmentResults({
+    initialInvestment: investData.initialInvestment,
+    annualInvestment: investData.annualInvestment,
+    expectedReturn: investData.expectedReturn / 100,
+    duration: investData.duration
+  });
+
   let totalInterest = 0;
 
   return (
@@ -23,21 +22,22 @@ export default function Result({ initialInvestment, annualInvestment, expectedRe
         </tr>
       </thead>
       <tbody>
-        
         {results.map((data) => {
           totalInterest += data.interest;
+          const investedCapital = 
+            investData.initialInvestment + 
+            (data.year * investData.annualInvestment);
+          
           return (
             <tr key={data.year}>
               <td>{data.year}</td>
-              <td>{data.valueEndOfYear.toFixed(0)}</td>
-              <td>{data.interest.toFixed(0)}</td>
-              <td>{totalInterest.toFixed(0)}</td>
-              <td>{(data.valueEndOfYear - totalInterest).toFixed(0)}</td>
+              <td>{data.valueEndOfYear.toFixed(2)}</td>
+              <td>{data.interest.toFixed(2)}</td>
+              <td>{totalInterest.toFixed(2)}</td>
+              <td>{investedCapital.toFixed(2)}</td>
             </tr>
           );
         })}
-
-        
       </tbody>
     </table>
   );

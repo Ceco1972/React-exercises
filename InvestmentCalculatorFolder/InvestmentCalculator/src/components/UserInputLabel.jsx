@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function UserInputLabel({ initialInvestment, onInitialInvestmentChange, annualInvestment, onAnnualInvestmentChange, expectedReturn, onExpectedReturnChange, duration, onDurationChange }) {
+export default function UserInputLabel({ investData, onValueChange }) {
     // const [initialInvestment, setInitialInvestment] = useState(initialInvestment);
     // function handleInitialIvestmentChange(event) {  
     //     setInitialInvestment(event.target.value);
@@ -11,38 +11,36 @@ export default function UserInputLabel({ initialInvestment, onInitialInvestmentC
         <p>
           <label>Initial Investment</label>
           <input 
-            type="number" 
-            value={initialInvestment}
-            onChange={(e) => onInitialInvestmentChange(Number(e.target.value))}
-            required 
+            type="number"
+            value={investData.initialInvestment}
+            onChange={(e) => onValueChange('initialInvestment', e.target.value)}
           />
         </p>
         <p>
-          <label htmlFor="annual-investment">Annual Investment</label>
+          <label>Annual Investment</label>
           <input 
-          type="number" 
-          value ={annualInvestment}
-          onChange={(e) => onAnnualInvestmentChange(Number(e.target.value))}
-          required
+            type="number"
+            value={investData.annualInvestment}
+            onChange={(e) => onValueChange('annualInvestment', e.target.value)}
           />
         </p>
       </div>
       <div className="input-group">
         <p>
-          <label htmlFor="expected-return">Expected Return</label>
+          <label>Expected Return</label>
           <input 
-          type="number"
-          value = {expectedReturn}
-          onChange={(e) => onExpectedReturnChange(Number(e.target.value))}
-          required />
+            type="number"
+            value={investData.expectedReturn}
+            onChange={(e) => onValueChange('expectedReturn', e.target.value)}
+          />
         </p>
         <p>
-          <label htmlFor="duration">Duration</label>
+          <label>Duration</label>
           <input 
-          type="number" 
-          value={duration}
-          onChange={(e) => onDurationChange(Number(e.target.value))}
-          required />
+            type="number"
+            value={investData.duration}
+            onChange={(e) => onValueChange('duration', e.target.value)}
+          />
         </p>
       </div>
     </div>

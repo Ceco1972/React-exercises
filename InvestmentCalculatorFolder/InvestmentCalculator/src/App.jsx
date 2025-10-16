@@ -4,25 +4,28 @@ import Result from "./components/Result"
 import { useState } from "react"
 
 function App() {
-  const [initialInvestment, setInitialInvestment] = useState();
-  const [annualInvestment, setAnnualInvestment] = useState();
-  const [expectedReturn, setExpectedReturn] = useState();
-  const [duration, setDuration] = useState();  
+  const [investObject, setInvestObject] = useState({
+    initialInvestment: 10000, 
+    annualInvestment: 1000, 
+    expectedReturn: 7, 
+    duration: 8 
+  });
+
+  const handleInputChange = (identifier, value) => {
+    setInvestObject(prevState => ({
+      ...prevState,
+      [identifier]: Number(value)
+    }));
+  };
 
   return (
-    <div className = 'center'>
+    <div className='center'>
       <Header/>
       <UserInputLabel 
-        initialInvestment={initialInvestment}
-        onInitialInvestmentChange={setInitialInvestment}
-        annualInvestment={annualInvestment}
-        onAnnualInvestmentChange={setAnnualInvestment}
-        expectedReturn={expectedReturn}
-        onExpectedReturnChange={setExpectedReturn}
-        duration={duration}
-        onDurationChange={setDuration}  
+        investData={investObject}
+        onValueChange={handleInputChange}
       />
-      <Result initialInvestment={initialInvestment} annualInvestment={annualInvestment} expectedReturn={expectedReturn} duration={duration}/>
+      <Result investData={investObject}/>
     </div>
   )
 }
