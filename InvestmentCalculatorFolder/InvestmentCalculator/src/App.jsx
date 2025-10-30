@@ -5,11 +5,13 @@ import { useState } from "react"
 
 function App() {
   const [investObject, setInvestObject] = useState({
-    initialInvestment: 10000, 
-    annualInvestment: 1000, 
-    expectedReturn: 7, 
-    duration: 8 
+    initialInvestment: '', 
+    annualInvestment: '', 
+    expectedReturn: '', 
+    duration: '' 
   });
+
+  const inputIsValid = investObject.duration >= 1;
 
   const handleInputChange = (identifier, value) => {
     setInvestObject(prevState => ({
@@ -25,7 +27,8 @@ function App() {
         investData={investObject}
         onValueChange={handleInputChange}
       />
-      <Result investData={investObject}/>
+      {!inputIsValid && <p>Please enter valid input values (duration must be at least 1 year).</p>}
+      {inputIsValid && <Result investData={investObject}/>} 
     </div>
   )
 }
